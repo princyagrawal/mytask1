@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<flectra>
+    <data>
+
+        <record id="course_info_form_view" model="ir.ui.view">
+            <field name="name">course info form view</field>
+            <field name="model">course.info</field>
+            <field name="arch" type="xml">
+                <form string="Course Information">
+                    <group>
+                        <field name="name"/>
+                        <field name="course_code"/>
+                        <field name="course_type"/>
+                        <field name="course_credit"/>
+                        <field name="student_line"/>
+                    </group>
+                    <group>
+                        <field name="course_duration" widget="float_time"/>
+                        <field name="course_fees"/>
+                        <field name="start_date"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+
+
+        <record id="course_info_list_view" model="ir.ui.view">
+            <field name="name">course info list view</field>
+            <field name="model">course.info</field>
+            <field name="arch" type="xml">
+                <tree string="Course Information">
+                        <field name="name"/>
+                        <field name="course_code"/>
+                        <field name="course_type"/>
+                        <field name="course_credit"/>
+                        <field name="course_duration"/>
+                        <field name="course_fees"/>
+                        <field name="student_line"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="course_info_search_view" model="ir.ui.view">
+
+            <field name="name">course info search view</field>
+            <field name="model">course.info</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="course_code"/>
+                    <field name="course_credit"/>
+                </search>
+            </field>
+        </record>
+
+
+
+        <!-- calendar view -->
+        <record model="ir.ui.view" id="course_info_calendar_view">
+            <field name="name">course info calendar view</field>
+            <field name="model">course.info</field>
+            <field name="arch" type="xml">
+                <calendar string="Calendar" date_start="start_date" color="name">
+                    <field name="name"/>
+                </calendar>
+            </field>
+        </record>
+
+
+        <record id="action_course_info" model="ir.actions.act_window">
+            <field name="name">Course</field>
+            <field name="res_model">course.info</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,calendar</field>
+
+        </record>
+
+        <menuitem id="student_mgnt_root" name="Student Management"/>
+
+        <menuitem id="student_mgnt_info_config" name="Student  Config" parent="student_mgnt_root"/>
+
+        <menuitem id="student_mgnt_course_menu" name="Course Information" action="action_course_info"
+                  parent="student_mgnt_info_config"/>
+
+
+    </data>
+</flectra>

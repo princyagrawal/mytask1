@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<flectra>
+    <data>
+
+        <record id="faculty_info_form_view" model="ir.ui.view">
+            <field name="name">faculty info form view</field>
+            <field name="model">faculty.info</field>
+            <field name="arch" type="xml">
+                <form string="Faculty Information">
+                    <group>
+                        <field name="name"/>
+                        <field name="fac_name"/>
+                        <field name="student_ids"/>
+                        <field name="total_students"/>
+                    </group>
+                     <group>
+                        <button name="count_total_students" type="object" string="Count Students"/>
+                    </group>
+                    <group>
+                        <field name="faculty_id"/>
+                        <field name="start_date"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+
+
+        <record id="faculty_info_list_view" model="ir.ui.view">
+            <field name="name">faculty info list view</field>
+            <field name="model">faculty.info</field>
+            <field name="arch" type="xml">
+                <tree string="Student Information">
+                        <field name="name"/>
+                        <field name="fac_name"/>
+                        <field name="total_students"/>
+                        <field name="faculty_id"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="faculty_info_search_view" model="ir.ui.view">
+
+            <field name="name">faculty info search view</field>
+            <field name="model">faculty.info</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="fac_name"/>
+                    <field name="faculty_id"/>
+                </search>
+            </field>
+        </record>
+
+
+
+        <!-- calendar view -->
+        <record model="ir.ui.view" id="faculty_info_calendar_view">
+            <field name="name">faculty info calendar view</field>
+            <field name="model">faculty.info</field>
+            <field name="arch" type="xml">
+                <calendar string="Calendar" date_start="start_date" color="fac_name">
+                    <field name="fac_name"/>
+                </calendar>
+            </field>
+        </record>
+
+
+        <record id="action_faculty_info" model="ir.actions.act_window">
+            <field name="name">Faculty</field>
+            <field name="res_model">faculty.info</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,calendar</field>
+
+        </record>
+
+        <menuitem id="student_mgnt_root" name="Student Management"/>
+
+        <menuitem id="student_mgnt_info_config" name="Student  Config" parent="student_mgnt_root"/>
+
+        <menuitem id="student_mgnt_faculty_menu" name="Faculty Information" action="action_faculty_info"
+                  parent="student_mgnt_info_config"/>
+
+
+    </data>
+</flectra>
